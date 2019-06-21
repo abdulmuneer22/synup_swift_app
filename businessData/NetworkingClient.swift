@@ -26,8 +26,6 @@ class NetworkingClient {
                 let swiftyJSONVar = JSON(apiResponse.result.value!)
                 response = swiftyJSONVar
                 completion(response,nil)
-//                let businessName = swiftyJSONVar["result"]["name"]
-//                print(businessName)
             }
             
             if(apiResponse.error != nil){

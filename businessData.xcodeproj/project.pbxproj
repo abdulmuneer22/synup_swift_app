@@ -17,6 +17,12 @@
 		DFB4AC7522BC890F008DAB71 /* BusinessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC7422BC890F008DAB71 /* BusinessDetailsViewController.swift */; };
 		DFB4AC7722BC89E8008DAB71 /* OperationalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC7622BC89E8008DAB71 /* OperationalDetailsViewController.swift */; };
 		DFB4AC7922BC8A81008DAB71 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC7822BC8A81008DAB71 /* MediaViewController.swift */; };
+		DFB4AC7B22BC8FB8008DAB71 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC7A22BC8FB8008DAB71 /* Actions.swift */; };
+		DFB4AC8222BC91F1008DAB71 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC8122BC91F1008DAB71 /* AppState.swift */; };
+		DFB4AC8422BC924C008DAB71 /* mainReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC8322BC924C008DAB71 /* mainReducer.swift */; };
+		DFB4AC8622BCA3AC008DAB71 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC8522BCA3AC008DAB71 /* Utils.swift */; };
+		DFB4AC8822BCDB5B008DAB71 /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC8722BCDB5B008DAB71 /* BusinessModel.swift */; };
+		DFB4AC8B22BCDB96008DAB71 /* BusinessHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC8A22BCDB96008DAB71 /* BusinessHour.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +40,12 @@
 		DFB4AC7422BC890F008DAB71 /* BusinessDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessDetailsViewController.swift; sourceTree = "<group>"; };
 		DFB4AC7622BC89E8008DAB71 /* OperationalDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationalDetailsViewController.swift; sourceTree = "<group>"; };
 		DFB4AC7822BC8A81008DAB71 /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
+		DFB4AC7A22BC8FB8008DAB71 /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		DFB4AC8122BC91F1008DAB71 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		DFB4AC8322BC924C008DAB71 /* mainReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainReducer.swift; sourceTree = "<group>"; };
+		DFB4AC8522BCA3AC008DAB71 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		DFB4AC8722BCDB5B008DAB71 /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
+		DFB4AC8A22BCDB96008DAB71 /* BusinessHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessHour.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +80,8 @@
 		DF03290F22B8E6F80017262F = {
 			isa = PBXGroup;
 			children = (
+				DFB4AC8922BCDB61008DAB71 /* Models */,
+				DFB4AC8022BC90ED008DAB71 /* Redux */,
 				DF03291A22B8E6F80017262F /* businessData */,
 				DF03291922B8E6F80017262F /* Products */,
 				182CCEDAAAD7116D3E6F442D /* Pods */,
@@ -96,8 +110,52 @@
 				DFB4AC7422BC890F008DAB71 /* BusinessDetailsViewController.swift */,
 				DFB4AC7622BC89E8008DAB71 /* OperationalDetailsViewController.swift */,
 				DFB4AC7822BC8A81008DAB71 /* MediaViewController.swift */,
+				DFB4AC8522BCA3AC008DAB71 /* Utils.swift */,
 			);
 			path = businessData;
+			sourceTree = "<group>";
+		};
+		DFB4AC7C22BC8FBE008DAB71 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				DFB4AC7A22BC8FB8008DAB71 /* Actions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		DFB4AC7D22BC8FD0008DAB71 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				DFB4AC8322BC924C008DAB71 /* mainReducer.swift */,
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		DFB4AC7E22BC8FDA008DAB71 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				DFB4AC8122BC91F1008DAB71 /* AppState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		DFB4AC8022BC90ED008DAB71 /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+				DFB4AC7E22BC8FDA008DAB71 /* State */,
+				DFB4AC7D22BC8FD0008DAB71 /* Reducers */,
+				DFB4AC7C22BC8FBE008DAB71 /* Actions */,
+			);
+			path = Redux;
+			sourceTree = "<group>";
+		};
+		DFB4AC8922BCDB61008DAB71 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DFB4AC8722BCDB5B008DAB71 /* BusinessModel.swift */,
+				DFB4AC8A22BCDB96008DAB71 /* BusinessHour.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,12 +273,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFB4AC7722BC89E8008DAB71 /* OperationalDetailsViewController.swift in Sources */,
+				DFB4AC8B22BCDB96008DAB71 /* BusinessHour.swift in Sources */,
+				DFB4AC7B22BC8FB8008DAB71 /* Actions.swift in Sources */,
 				DFB4AC7922BC8A81008DAB71 /* MediaViewController.swift in Sources */,
+				DFB4AC8222BC91F1008DAB71 /* AppState.swift in Sources */,
 				DFB4AC7322BC8059008DAB71 /* CustomTabBar.swift in Sources */,
 				DF03291E22B8E6F80017262F /* ViewController.swift in Sources */,
 				DF03291C22B8E6F80017262F /* AppDelegate.swift in Sources */,
+				DFB4AC8622BCA3AC008DAB71 /* Utils.swift in Sources */,
 				DFB4AC7522BC890F008DAB71 /* BusinessDetailsViewController.swift in Sources */,
+				DFB4AC8422BC924C008DAB71 /* mainReducer.swift in Sources */,
 				DF03292E22B8ED060017262F /* NetworkingClient.swift in Sources */,
+				DFB4AC8822BCDB5B008DAB71 /* BusinessModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

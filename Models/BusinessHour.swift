@@ -7,3 +7,11 @@
 //
 
 import Foundation
+public struct BusinessHour:Decodable {
+    
+    public var day : String!
+    public var endTime : String!
+    public var startTime : String!
+    
+}
+

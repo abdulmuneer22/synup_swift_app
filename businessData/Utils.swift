@@ -7,3 +7,23 @@
 //
 
 import Foundation
+import UIKit
+
+
+func createLabel(name:String) -> UILabel {
+    
+    let label = UILabel()
+    
+    
+    
+    
+    label.text = name
+    label.font = .systemFont(ofSize: 18)
+    label.textColor = .purple
+    label.translatesAutoresizingMaskIntoConstraints = false
+    
+    label.font = .systemFont(ofSize: 18)
+    label.textColor = .purple
+    label.translatesAutoresizingMaskIntoConstraints = false
+    return label
+}

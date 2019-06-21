@@ -7,32 +7,51 @@
 //
 
 import UIKit
+import ReSwift
+import SwiftyJSON
 
 
 
-struct Business {
-    let name:String?
-    let city:String?
-    let streetName: String?
-    
-    init(name:String? = nil,city:String? = nil, streetName:String? = nil) {
-        self.name = name
-        self.city = city
-        self.streetName = streetName
-    }
-}
 
-class ViewController: UIViewController {
-    
+class ViewController: UIViewController, StoreSubscriber {
     
     var businessLabel : UILabel!
     var streetNameLabel: UILabel!
     var streetName: UILabel!
     var businessImage: UIImage!
     
+    typealias StoreSubscriberStateType = AppState
+    
+    
+    
+    // subscribe to store changes here for this View Controller
+    func newState(state: AppState) {
+        
+        if let business = state.businessData {
+            
+            if let label = businessLabel {
+                label.text = business.name
+            }
+            
+            if let label = streetName {
+                label.text = business.street
+            }
+            
+            
+            
+            
+        }
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        // subscribe to the changes
+        
+        mainStore.subscribe(self)
         
         
         // layout items
@@ -53,15 +72,28 @@ class ViewController: UIViewController {
         guard let urlToExecute = URL(string: "http://uat1.uat-sandbox.stg.synup.com/api/v2/businesses/41.json?type=all&auth_token=wu4751AU38SL-bHyufAqCHaNvMM") else { return  }
         let networkingClient = NetworkingClient()
         
+        
+        
         networkingClient.execute(url: urlToExecute) { (json,error) in
-            let businessName = json!["result"]["name"].string
-            let cityName = json!["result"]["city"].string
-            let street = json!["result"]["street"].string
-            //            print(businessName)
-            let currentBusiness = Business(name: businessName,city: cityName,streetName: street)
-            self.businessLabel.text = currentBusiness.name
-            self.streetName.text = currentBusiness.streetName
-            print("currentBusiness : \(currentBusiness)")
+            let currentBusiness = BusinessModel(
+                businessCover: "",
+                businessLogo: "",
+                city: json!["result"]["city"].string,
+                descriptionField: "",
+                hideAddress: false,
+                id: 1, latitude: "",
+                longitude: "",
+                name: json!["result"]["name"].string,
+                ownerName: "",
+                phone: "",
+                postalCode: "",
+                stateName: "",
+                street: json!["result"]["street"].string,
+                subCategoryId: 1,
+                tagline: json!["result"]["tagline"].string,
+                yearOfIncorporation: json!["result"]["year_of_incorporation"].string)
+            
+            mainStore.dispatch(ReceivedBusinessData(payload: currentBusiness))
         }
     }
     
