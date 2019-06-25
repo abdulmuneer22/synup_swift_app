@@ -8,9 +8,6 @@
 
 import Foundation
 
-
-
-
 struct Business: Codable {
     let name: String?
     let street: String?

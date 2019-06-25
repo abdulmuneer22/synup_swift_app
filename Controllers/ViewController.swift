@@ -27,12 +27,9 @@ class ViewController: UIViewController, StoreSubscriber {
     // subscribe to store changes here for this View Controller
     func newState(state: AppState) {
         
-      
-        print(state)
-        
-        for businessHour in state.businessData.business_hours! {
-            print(businessHour.day!)
-        }
+//        for businessHour in state.businessData.business_hours! {
+//            print(businessHour.day!)
+//        }
         
     }
     

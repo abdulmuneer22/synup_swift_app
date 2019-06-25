@@ -21,7 +21,7 @@ func mainReducer(action: Action, state: AppState?) -> AppState {
     
     let initialBusinessHours = [BusinessHour(day: "",start_time: "",end_time: "")]
     
-    var state = state ?? AppState(businessData: Business(name: "",business_hours: initialBusinessHours))
+    var state = state ?? AppState(businessData: Business(business_hours: initialBusinessHours))
     
     switch action {
         
