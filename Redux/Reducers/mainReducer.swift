@@ -18,17 +18,14 @@ struct MyNameAction: Action {
 // on the actions it receives
 func mainReducer(action: Action, state: AppState?) -> AppState {
     // if no state has been provided, create the default state
-    var state = state ?? AppState(counter: 0, businessData: BusinessModel())
+    
+    let initialBusinessHours = [BusinessHour(day: "",start_time: "",end_time: "")]
+    
+    var state = state ?? AppState(businessData: Business(name: "",business_hours: initialBusinessHours))
     
     switch action {
-    case _ as CounterActionIncrease:
-        state.counter += 1
-    case _ as CounterActionDecrease:
-        state.counter -= 1
         
     case let action as ReceivedBusinessData:
-        
-        print(action.payload)
         state.businessData = action.payload
         break
     default:

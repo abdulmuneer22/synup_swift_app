@@ -36,13 +36,7 @@ class BusinessDetailsViewController: UIViewController, StoreSubscriber {
     // subscribe to store changes here for this View Controller
     func newState(state: AppState) {
         
-        if let business = state.businessData {
-            
-            _tagline = business.tagline!
-            _yoc = business.yearOfIncorporation
-            
-            
-        }
+        
         
     }
     

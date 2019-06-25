@@ -22,7 +22,6 @@
 		DFB4AC8422BC924C008DAB71 /* mainReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC8322BC924C008DAB71 /* mainReducer.swift */; };
 		DFB4AC8622BCA3AC008DAB71 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC8522BCA3AC008DAB71 /* Utils.swift */; };
 		DFB4AC8822BCDB5B008DAB71 /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC8722BCDB5B008DAB71 /* BusinessModel.swift */; };
-		DFB4AC8B22BCDB96008DAB71 /* BusinessHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC8A22BCDB96008DAB71 /* BusinessHour.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +44,6 @@
 		DFB4AC8322BC924C008DAB71 /* mainReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainReducer.swift; sourceTree = "<group>"; };
 		DFB4AC8522BCA3AC008DAB71 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		DFB4AC8722BCDB5B008DAB71 /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
-		DFB4AC8A22BCDB96008DAB71 /* BusinessHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessHour.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				DFB4AC8722BCDB5B008DAB71 /* BusinessModel.swift */,
-				DFB4AC8A22BCDB96008DAB71 /* BusinessHour.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -273,7 +270,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFB4AC7722BC89E8008DAB71 /* OperationalDetailsViewController.swift in Sources */,
-				DFB4AC8B22BCDB96008DAB71 /* BusinessHour.swift in Sources */,
 				DFB4AC7B22BC8FB8008DAB71 /* Actions.swift in Sources */,
 				DFB4AC7922BC8A81008DAB71 /* MediaViewController.swift in Sources */,
 				DFB4AC8222BC91F1008DAB71 /* AppState.swift in Sources */,

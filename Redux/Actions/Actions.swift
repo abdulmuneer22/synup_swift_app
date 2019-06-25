@@ -16,5 +16,5 @@ struct CounterActionDecrease: Action {}
 
 // synup actions
 struct ReceivedBusinessData: Action {
-    let payload : BusinessModel
+    let payload : Business
 }

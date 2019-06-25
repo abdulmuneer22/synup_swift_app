@@ -27,19 +27,11 @@ class ViewController: UIViewController, StoreSubscriber {
     // subscribe to store changes here for this View Controller
     func newState(state: AppState) {
         
-        if let business = state.businessData {
-            
-            if let label = businessLabel {
-                label.text = business.name
-            }
-            
-            if let label = streetName {
-                label.text = business.street
-            }
-            
-            
-            
-            
+      
+        print(state)
+        
+        for businessHour in state.businessData.business_hours! {
+            print(businessHour.day!)
         }
         
     }
@@ -71,30 +63,7 @@ class ViewController: UIViewController, StoreSubscriber {
     func loadData() {
         guard let urlToExecute = URL(string: "http://uat1.uat-sandbox.stg.synup.com/api/v2/businesses/41.json?type=all&auth_token=wu4751AU38SL-bHyufAqCHaNvMM") else { return  }
         let networkingClient = NetworkingClient()
-        
-        
-        
-        networkingClient.execute(url: urlToExecute) { (json,error) in
-            let currentBusiness = BusinessModel(
-                businessCover: "",
-                businessLogo: "",
-                city: json!["result"]["city"].string,
-                descriptionField: "",
-                hideAddress: false,
-                id: 1, latitude: "",
-                longitude: "",
-                name: json!["result"]["name"].string,
-                ownerName: "",
-                phone: "",
-                postalCode: "",
-                stateName: "",
-                street: json!["result"]["street"].string,
-                subCategoryId: 1,
-                tagline: json!["result"]["tagline"].string,
-                yearOfIncorporation: json!["result"]["year_of_incorporation"].string)
-            
-            mainStore.dispatch(ReceivedBusinessData(payload: currentBusiness))
-        }
+        networkingClient.getBusinessData(url: urlToExecute)        
     }
     
     
