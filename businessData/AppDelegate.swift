@@ -8,6 +8,7 @@
 
 import UIKit
 import ReSwift
+import Apollo
 
 
 // The global application store, which is responsible for managing the appliction state.
@@ -15,6 +16,18 @@ let mainStore = Store<AppState>(
     reducer: mainReducer,
     state: nil
 )
+
+
+
+let apollo: ApolloClient = {
+    let configuration = URLSessionConfiguration.default
+    // Add additional headers as needed
+    configuration.httpAdditionalHeaders = ["Authorization": "API ZZmVKpGPe25ZXYF3U_0eQYUXSh0"]
+    
+    let url = URL(string: "http://sandbox-lb3.env.synup.com/graphql")!
+    
+    return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
+}()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UINavigationController(rootViewController:CustomTabBarController())
         window?.backgroundColor = .white
         window?.makeKeyAndVisible()
+        
         
         return true
     }

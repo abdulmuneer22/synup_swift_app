@@ -2,25 +2,11 @@ query searchLocations($query: String!){
     searchLocations(query: $query){
         edges{
             node {
-                accountId
                 name
-                additionalInfo
-                approved
-                bizUrl
-                cancellationScheduledAt
-                categoryId
+                accountId
                 city
                 countryIso
-                databaseId
-                description
-                facebookUrl
-                locationPhotos{
-                    name
-                }
                 ownerEmail
-                businessHours{
-                    day
-                }
             }
         }
     }

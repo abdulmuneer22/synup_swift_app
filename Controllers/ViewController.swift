@@ -51,17 +51,17 @@ class ViewController: UIViewController, StoreSubscriber {
         setUpLayout()
         
         // data loading
-        loadData()
+//        loadData()
         
         
     }
     
     
-    func loadData() {
-        guard let urlToExecute = URL(string: "http://uat1.uat-sandbox.stg.synup.com/api/v2/businesses/41.json?type=all&auth_token=wu4751AU38SL-bHyufAqCHaNvMM") else { return  }
-        let networkingClient = NetworkingClient()
-        networkingClient.getBusinessData(url: urlToExecute)        
-    }
+//    func loadData() {
+//        guard let urlToExecute = URL(string: "http://uat1.uat-sandbox.stg.synup.com/api/v2/businesses/41.json?type=all&auth_token=wu4751AU38SL-bHyufAqCHaNvMM") else { return  }
+//        let networkingClient = NetworkingClient()
+//        networkingClient.getBusinessData(url: urlToExecute)
+//    }
     
     
     

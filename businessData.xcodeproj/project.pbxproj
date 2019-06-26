@@ -15,6 +15,8 @@
 		DF03292E22B8ED060017262F /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF03292D22B8ED060017262F /* NetworkingClient.swift */; };
 		DF1475C022C34C6000631642 /* API.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DF1475BE22C34C6000631642 /* API.graphql */; };
 		DF1475C222C34C6700631642 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = DF1475C122C34C6700631642 /* schema.json */; };
+		DF1475C922C35E2700631642 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1475C822C35E2700631642 /* API.swift */; };
+		DF1475CB22C3658B00631642 /* GraphQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1475CA22C3658B00631642 /* GraphQueries.swift */; };
 		DFA20CB622C1F7CB00A85070 /* BusinessInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA20CB522C1F7CB00A85070 /* BusinessInformationController.swift */; };
 		DFA20CBA22C201A700A85070 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA20CB922C201A700A85070 /* CustomCell.swift */; };
 		DFB4AC7322BC8059008DAB71 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB4AC7222BC8059008DAB71 /* CustomTabBar.swift */; };
@@ -41,6 +43,8 @@
 		DF03292D22B8ED060017262F /* NetworkingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
 		DF1475BE22C34C6000631642 /* API.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = API.graphql; sourceTree = "<group>"; };
 		DF1475C122C34C6700631642 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		DF1475C822C35E2700631642 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		DF1475CA22C3658B00631642 /* GraphQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQueries.swift; sourceTree = "<group>"; };
 		DFA20CB522C1F7CB00A85070 /* BusinessInformationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInformationController.swift; sourceTree = "<group>"; };
 		DFA20CB922C201A700A85070 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		DFB4AC7222BC8059008DAB71 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 		DF03291A22B8E6F80017262F /* businessData */ = {
 			isa = PBXGroup;
 			children = (
+				DF1475C822C35E2700631642 /* API.swift */,
 				DF1475C122C34C6700631642 /* schema.json */,
 				DF1475BE22C34C6000631642 /* API.graphql */,
 				DF03291B22B8E6F80017262F /* AppDelegate.swift */,
@@ -129,6 +134,7 @@
 				DFB4AC7822BC8A81008DAB71 /* MediaViewController.swift */,
 				DF03291D22B8E6F80017262F /* ViewController.swift */,
 				DFA20CB522C1F7CB00A85070 /* BusinessInformationController.swift */,
+				DF1475CA22C3658B00631642 /* GraphQueries.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 				DFA20CB622C1F7CB00A85070 /* BusinessInformationController.swift in Sources */,
 				DFB4AC7B22BC8FB8008DAB71 /* Actions.swift in Sources */,
 				DFB4AC7922BC8A81008DAB71 /* MediaViewController.swift in Sources */,
+				DF1475C922C35E2700631642 /* API.swift in Sources */,
 				DFB4AC8222BC91F1008DAB71 /* AppState.swift in Sources */,
 				DFB4AC7322BC8059008DAB71 /* CustomTabBar.swift in Sources */,
 				DF03291E22B8E6F80017262F /* ViewController.swift in Sources */,
@@ -330,6 +337,7 @@
 				DFB4AC7522BC890F008DAB71 /* BusinessDetailsViewController.swift in Sources */,
 				DFB4AC8422BC924C008DAB71 /* mainReducer.swift in Sources */,
 				DF03292E22B8ED060017262F /* NetworkingClient.swift in Sources */,
+				DF1475CB22C3658B00631642 /* GraphQueries.swift in Sources */,
 				DFA20CBA22C201A700A85070 /* CustomCell.swift in Sources */,
 				DFB4AC8822BCDB5B008DAB71 /* BusinessModel.swift in Sources */,
 			);

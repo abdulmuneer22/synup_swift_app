@@ -46,18 +46,18 @@ class NetworkingClient {
     
     
     
-    func getBusinessData(url : URL){
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let data = data {
-                let result = try? JSONDecoder().decode(APIResponse.self, from: data)
-                let businessData = result?.result
-                if(businessData != nil){
-                    mainStore.dispatch(ReceivedBusinessData(payload: businessData!))
-                }
-                
-            }
-            }.resume()
-    }
+//    func getBusinessData(url : URL){
+//        URLSession.shared.dataTask(with: url) { (data, response, error) in
+//            if let data = data {
+//                let result = try? JSONDecoder().decode(APIResponse.self, from: data)
+//                let businessData = result?.result
+//                if(businessData != nil){
+//                    mainStore.dispatch(ReceivedBusinessData(payload: businessData!))
+//                }
+//                
+//            }
+//            }.resume()
+//    }
     
     
     
