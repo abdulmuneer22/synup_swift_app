@@ -7,34 +7,48 @@
 //
 
 import UIKit
+import SnapKit
 
 class CustomCell : UITableViewCell{
     
-    var message : String?
+    var headerLabel: String?
+    var headerValue: String?
     
     
-    var messageView: UILabel = {
-        var textView = UILabel()
-        return textView
+    var HeaderComponent: UIView = {
+        var container = UIView()
+//        container.backgroundColor = .red
+        return container
     }()
+    
+    var Label: UILabel = {
+        var label = UILabel()
+//        label.backgroundColor = .green
+        return label
+    }()
+    
+    
+    
+    var ValueText: UILabel = {
+        var label = UILabel()
+//        label.backgroundColor = .purple
+        return label
+        
+    }()
+    
+    
+    
+    
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         //
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = .red
-        self.addSubview(messageView)
         
-        
-        messageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            messageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            messageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
-            ])
-        
-        //        messageView.translatesAutoresizingMaskIntoConstraints = false
-        //        messageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        //        messageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        self.addSubview(HeaderComponent)
+        HeaderComponent.addSubview(Label)
+        HeaderComponent.addSubview(ValueText)
+        setUpConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,8 +57,53 @@ class CustomCell : UITableViewCell{
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if let message = message {
-            messageView.text = message
+        
+        Label.text = String(headerLabel ?? "").upperCaseFirstLetter()
+        ValueText.text =  String(headerValue ?? "").upperCaseFirstLetter()
+        
+    }
+    
+    
+    
+    func setUpConstraints(){
+        HeaderComponent.snp.makeConstraints { (make) in
+            make.width.equalTo(self)
+            make.height.equalTo(40)
+            make.left.equalTo(self)
+        }
+        
+        
+        Label.snp.makeConstraints { (make) in
+            make.width.equalTo(self).multipliedBy(0.4)
+            make.center.equalTo(self)
+            make.left.equalTo(self).offset(20)
+        }
+
+        ValueText.snp.makeConstraints { (make) in
+            make.width.equalTo(self).multipliedBy(0.4)
+            make.height.equalTo(40)
+            make.center.equalTo(self)
+            make.left.equalTo(self.Label.snp.right)
+            make.leftMargin.equalTo(10)
         }
     }
+    
+    
 }
+
+
+
+extension String {
+    func upperCaseFirstLetter() -> String{
+        return prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+}
+
+
+
+
+
+
+
+
+

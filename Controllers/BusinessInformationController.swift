@@ -22,6 +22,12 @@ class BusinessInformationController : UITableViewController , StoreSubscriber{
         data!["name"] = state.businessData.name
         data!["city"] = state.businessData.city
         data!["description"] = state.businessData.description
+        data!["state_name"] = state.businessData.state_name
+        data!["postal_code"] = state.businessData.postal_code
+        data!["phone"] = state.businessData.phone
+        data!["biz_url"] = state.businessData.biz_url
+        data!["owner_name"] = state.businessData.owner_name
+        data!["tagline"] = state.businessData.tagline
         
         
         DispatchQueue.main.async {
@@ -43,7 +49,8 @@ class BusinessInformationController : UITableViewController , StoreSubscriber{
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "custom")! as! CustomCell
         let currentKey = Array(data!.keys)[indexPath.row]
         let currentValue = data?[currentKey]
-        cell.message = "\(currentKey) : \(currentValue ?? "")"
+        cell.headerValue = currentValue as? String
+        cell.headerLabel = currentKey
         return cell
     }
     
