@@ -6,4 +6,5 @@ target 'businessData' do
  pod 'SwiftyJSON', '~> 4.0'
  pod "ReSwift"
  pod "Apollo"
+ pod 'SwiftIconFont'
 end

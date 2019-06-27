@@ -18,22 +18,22 @@ class CustomTabBarController : UITabBarController {
         
         //        let layout = UICollectionViewLayout()
         
-        let rootViewController = BusinessInformationTableView()
-        let businessDetailsViewController = BusinessDetailsViewController()
-        let operationDetailsViewController = OperationalDetailsViewController()
-        let mediaViewController = MediaViewController()
+//        let rootViewController = BusinessInformationView()
+//        let businessDetailsViewController = BusinessDetailsViewController()
+//        let operationDetailsViewController = OperationalDetailsViewController()
+//        let mediaViewController = MediaViewController()
+//        
         
         
         
         
         
-        
-        viewControllers = [
-            createNavBarController(name: "Business Information",vc :rootViewController),
-            createNavBarController(name: "Business Details",vc : businessDetailsViewController),
-            createNavBarController(name: "Operation Details",vc : operationDetailsViewController),
-            createNavBarController(name: "Media",vc : mediaViewController)
-        ]
+//        viewControllers = [
+//            createNavBarController(name: "Business Information",vc :rootViewController),
+//            createNavBarController(name: "Business Details",vc : businessDetailsViewController),
+//            createNavBarController(name: "Operation Details",vc : operationDetailsViewController),
+//            createNavBarController(name: "Media",vc : mediaViewController)
+//        ]
         
     }
     
