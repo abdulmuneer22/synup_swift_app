@@ -18,7 +18,7 @@ class CustomTabBarController : UITabBarController {
         
         //        let layout = UICollectionViewLayout()
         
-        let rootViewController = BusinessInformationController()
+        let rootViewController = BusinessInformationTableView()
         let businessDetailsViewController = BusinessDetailsViewController()
         let operationDetailsViewController = OperationalDetailsViewController()
         let mediaViewController = MediaViewController()

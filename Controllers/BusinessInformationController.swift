@@ -11,6 +11,8 @@ import ReSwift
 import  SwiftyJSON
 
 
+
+// Can use this one if we need to show an entire view as table view controller
 class BusinessInformationController : UITableViewController{
     
     
@@ -19,12 +21,12 @@ class BusinessInformationController : UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GraphQueries.getBusinessData { (response : [String : JSON]) in
-            self.data = response
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+//        GraphQueries.getBusinessData { (response : [String : JSON]) in
+//            self.data = response
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
         
         self.tableView.register(CustomCell.self, forCellReuseIdentifier: "custom")
         

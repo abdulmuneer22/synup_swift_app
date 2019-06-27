@@ -13,6 +13,9 @@ import SwiftyJSON
 
 
 
+
+// initial view controller , (if) , shows example of how to use with ReSwift ( redux like data flow )
+// also shows how to use Constraints with out Snap Kit ( NS Constraints )
 class ViewController: UIViewController, StoreSubscriber {
     
     var businessLabel : UILabel!
@@ -36,6 +39,7 @@ class ViewController: UIViewController, StoreSubscriber {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
         // subscribe to the changes

@@ -10,8 +10,8 @@ import Foundation
 import SwiftyJSON
 
 class GraphQueries {
-    public static func getBusinessData(completion : @escaping ([String : JSON]) -> Void) {
-        apollo.fetch(query: SearchLocationsQuery(query: "OM")) {
+    public static func getBusinessData(queryString: String, completion : @escaping ([String : JSON]) -> Void) {
+        apollo.fetch(query: SearchLocationsQuery(query: queryString)) {
             (result,error) in
             if let resultMap = result?.data?.resultMap {
                 let accountData = JSON(resultMap)
