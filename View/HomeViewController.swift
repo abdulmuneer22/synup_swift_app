@@ -17,6 +17,10 @@ public enum Fonts: String {
 }
 
 
+public var informationItems = ["name","yearOfIncorporation","subCategoryName","street","phone","bizUrl"]
+public var detailsItems = ["ownerName","ownerEmail","yearOfIncorporation"]
+public var images = ["locationPhotos"]
+
 
 class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate,UITableViewDataSource , UISearchBarDelegate {
     
@@ -25,6 +29,7 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
     var stackView: UIStackView!
     var data : [String : JSON] = [:]
     var searchSuggestions: [JSON] = []
+    var initialData : [String : JSON] = [:]
     
     fileprivate var header:UIView = {
         let header = UIView()
@@ -74,6 +79,9 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
         tb4.tag = 3
         tb4.icon(from: .fontAwesome, code: "info", iconColor: .gray, imageSize: CGSize(width: 20, height: 20), ofSize: 20)
         tb.items = [tb1,tb2,tb3,tb4]
+        
+        // making default selected item
+        tb.selectedItem = tb.items![0] as  UITabBarItem
         return tb
     }()
     
@@ -194,14 +202,33 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
     
     
     
+    /********* TAB BAR METHODS *********/
+    
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let index = item.tag
         
-        if(index != 0) {
-            table.isHidden = true
-        }else{
-            table.isHidden = false
+        
+        // change data source based on item clicked
+        
+        
+        if(index == 0) {
+            let filtered = initialData.filter { (arg0) -> Bool in
+                let (key, _) = arg0
+                return informationItems.contains(key)
+            }
+            data = filtered
+            table.reloadData()
+        } else if index == 1{
+            let filtered = initialData.filter { (arg0) -> Bool in
+                let (key, _) = arg0
+                return detailsItems.contains(key)
+            }
+            data = filtered
+            table.reloadData()
+        }else {
+            data = [:]
+            table.reloadData()
         }
     }
     
@@ -251,6 +278,11 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
             for (key,subJson):(String, JSON) in dataSource {
                 data[key] = subJson
             }
+            initialData = data
+            data = data.filter({ (arg0) -> Bool in
+                let (key, _) = arg0
+                return informationItems.contains(key)
+            })
             body.isHidden = false
             dropDownView.isHidden = true
             dropDowntable.isHidden = true
@@ -274,11 +306,11 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
         if (searchText.count > 3){
             self.activityIndicator.startAnimating()
             
-
+            
             body.isHidden = true
             dropDownView.isHidden = false
             dropDowntable.isHidden = false
-
+            
             
             GraphQueries.getBusinessData(queryString: searchText) { (response) in
                 
@@ -287,7 +319,6 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
                 //set suggestions data source
                 
                 for business in response {
-//                    print(business)
                     self.searchSuggestions.append(business["node"])
                 }
                 

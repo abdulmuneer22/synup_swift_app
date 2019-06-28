@@ -17,7 +17,7 @@ class CustomCell : UITableViewCell{
     
     var HeaderComponent: UIView = {
         var container = UIView()
-//        container.backgroundColor = .red
+//        container.backgroundColor = .yellow
         return container
     }()
     
@@ -37,6 +37,19 @@ class CustomCell : UITableViewCell{
     }()
     
     
+    var leftContainer : UIView = {
+        var container = UIView()
+//        container.backgroundColor = .red
+        return container
+    }()
+    
+    var rightContainer : UIView = {
+        var container = UIView()
+//        container.backgroundColor = .purple
+        return container
+    }()
+    
+    
     
     
     
@@ -46,8 +59,10 @@ class CustomCell : UITableViewCell{
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.addSubview(HeaderComponent)
-        HeaderComponent.addSubview(Label)
-        HeaderComponent.addSubview(ValueText)
+        HeaderComponent.addSubview(leftContainer)
+        HeaderComponent.addSubview(rightContainer)
+        leftContainer.addSubview(Label)
+        rightContainer.addSubview(ValueText)
         setUpConstraints()
     }
     
@@ -67,24 +82,38 @@ class CustomCell : UITableViewCell{
     
     func setUpConstraints(){
         HeaderComponent.snp.makeConstraints { (make) in
-            make.width.equalTo(self)
+            make.width.equalTo(self.snp.width)
             make.height.equalTo(40)
             make.left.equalTo(self)
         }
         
         
-        Label.snp.makeConstraints { (make) in
-            make.width.equalTo(self).multipliedBy(0.4)
-            make.center.equalTo(self)
-            make.left.equalTo(self).offset(20)
-        }
-
-        ValueText.snp.makeConstraints { (make) in
-            make.width.equalTo(self).multipliedBy(0.4)
+        
+        leftContainer.snp.makeConstraints { (make) in
             make.height.equalTo(40)
-            make.center.equalTo(self)
-            make.left.equalTo(self.Label.snp.right)
-            make.leftMargin.equalTo(10)
+            make.width.equalTo(self.snp.width).multipliedBy(0.5)
+            make.left.equalTo(5)
+        }
+        
+        rightContainer.snp.makeConstraints { (make) in
+            make.width.equalTo(self.snp.width).multipliedBy(0.5)
+            make.height.equalTo(40)
+            make.left.equalTo(self.leftContainer.snp.rightMargin)
+        }
+        
+        
+        Label.snp.makeConstraints { (make) in
+            make.left.equalTo(leftContainer.snp.left)
+            make.right.equalTo(leftContainer.snp.right)
+            make.height.equalTo(40)
+        }
+        
+        
+        
+        ValueText.snp.makeConstraints { (make) in
+            make.left.equalTo(rightContainer.snp.left)
+            make.right.equalTo(rightContainer.snp.right)
+            make.height.equalTo(40)
         }
     }
     

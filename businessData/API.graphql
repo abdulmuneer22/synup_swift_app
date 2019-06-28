@@ -3,10 +3,17 @@ query searchLocations($query: String!){
         edges{
             node {
                 name
-                accountId
-                city
-                countryIso
+                yearOfIncorporation
+                subCategoryName
+                street
+                phone
+                bizUrl
+                ownerName
                 ownerEmail
+                yearOfIncorporation
+                locationPhotos{
+                    url
+                }
             }
         }
     }
