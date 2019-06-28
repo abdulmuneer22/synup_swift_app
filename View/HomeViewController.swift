@@ -48,7 +48,7 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
     
     fileprivate var body: UIView = {
         var body = UIView()
-        body.backgroundColor = .purple
+        body.backgroundColor = .green
         return body
     }()
     
@@ -98,7 +98,6 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
     
     fileprivate let dropDownView : UIView = {
         let dv = UIView()
-        dv.backgroundColor = .red
         return dv
     }()
     
@@ -197,7 +196,6 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
     
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        print(item)
         let index = item.tag
         
         if(index != 0) {
@@ -209,14 +207,17 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
     
     
     
+    /******** TABLE VIEW METHODS ************/
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // returns number of rows required here
         if tableView == self.dropDowntable {
             return searchSuggestions.count
-        }else{
-            return 0
+        }else if tableView == self.table{
+            return data.count
         }
         
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -243,27 +244,51 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // hadle table item press for drop downs here
+        if tableView == dropDowntable {
+            let dataSource = searchSuggestions[indexPath.row]
+            for (key,subJson):(String, JSON) in dataSource {
+                data[key] = subJson
+            }
+            body.isHidden = false
+            dropDownView.isHidden = true
+            dropDowntable.isHidden = true
+            table.reloadData()
+            searchBar.text = ""
+            
+        }else{
+            print("Selected Wrong Dropdown")
+        }
+    }
+    
+    
+    
+    /************ SEARCH BAR METHODS ***************/
+    
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // on change on search bar , we need to check the length of input string ,
         // if its > 3 , search need to be initiated ,
         // during search , activity indicator need to be placed
         if (searchText.count > 3){
             self.activityIndicator.startAnimating()
+            
+
+            body.isHidden = true
+            dropDownView.isHidden = false
+            dropDowntable.isHidden = false
+
+            
             GraphQueries.getBusinessData(queryString: searchText) { (response) in
-                // print response here
-                
                 
                 // response is an array of items ,
-                // we need to construct a array of dictionary of business items with key and value
                 
                 //set suggestions data source
                 
                 for business in response {
-                    print(business)
+//                    print(business)
                     self.searchSuggestions.append(business["node"])
-//                    for (key,subJson):(String, JSON) in business["node"] {
-//                        self.searchSuggestions[key] = subJson
-//                    }
                 }
                 
                 self.dropDowntable.reloadData()
