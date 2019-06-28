@@ -10,18 +10,15 @@ import Foundation
 import SwiftyJSON
 
 class GraphQueries {
-    public static func getBusinessData(queryString: String, completion : @escaping ([String : JSON]) -> Void) {
+    public static func getBusinessData(queryString: String, completion : @escaping ([JSON]) -> Void) {
         apollo.fetch(query: SearchLocationsQuery(query: queryString)) {
             (result,error) in
             if let resultMap = result?.data?.resultMap {
                 let accountData = JSON(resultMap)
-                let payload = accountData["searchLocations"]["edges"][0]["node"]
-                var result: [String : JSON] = [:]
-                for (key,subJson):(String, JSON) in payload {
-                    result[key] = subJson
-                }
-                completion(result)
+                let payload = accountData["searchLocations"]["edges"].arrayValue
                 
+                // return array of JSON
+                completion(payload)
             }
         }
     }

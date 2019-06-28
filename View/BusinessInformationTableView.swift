@@ -113,9 +113,10 @@ class BusinessInformationTableView: UIViewController, UITableViewDelegate, UITab
             self.activityIndicator.startAnimating()
             GraphQueries.getBusinessData(queryString: searchText) { (response) in
                 // print response here
-                self.data = response
-                self.myTableView.reloadData()
-                self.activityIndicator.stopAnimating()
+                print(response)
+//                self.data = response
+//                self.myTableView.reloadData()
+//                self.activityIndicator.stopAnimating()
             }
         }else{
             return

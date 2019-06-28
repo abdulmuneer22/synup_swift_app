@@ -24,7 +24,7 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
     var scrollView: UIScrollView!
     var stackView: UIStackView!
     var data : [String : JSON] = [:]
-    
+    var searchSuggestions: [JSON] = []
     
     fileprivate var header:UIView = {
         let header = UIView()
@@ -115,7 +115,7 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
         table.delegate = self
         
         
-        dropDowntable.register(CustomCell.self, forCellReuseIdentifier: "businessSuggestions")
+        dropDowntable.register(DropDownItem.self, forCellReuseIdentifier: "businessSuggestions")
         dropDowntable.delegate = self
         dropDowntable.dataSource = self
         
@@ -211,19 +211,21 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // returns number of rows required here
-        return data.count
+        if tableView == self.dropDowntable {
+            return searchSuggestions.count
+        }else{
+            return 0
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if tableView == self.dropDowntable {
             // pass data to each cell item here , we are using Custom Cell Created by us than default UITableCell
-            let cell = tableView.dequeueReusableCell(withIdentifier: "businessSuggestions") as! CustomCell
-            let currentKey = Array(data.keys)[indexPath.row]
-            cell.headerLabel = currentKey
-            if let currentValue = data[currentKey]?.stringValue {
-                cell.headerValue = currentValue
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: "businessSuggestions") as! DropDownItem
+            cell.headerLabel = searchSuggestions[indexPath.row]["name"].stringValue
+            
             return cell
         }else if tableView == self.table {
             // pass data to each cell item here , we are using Custom Cell Created by us than default UITableCell
@@ -249,9 +251,24 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
             self.activityIndicator.startAnimating()
             GraphQueries.getBusinessData(queryString: searchText) { (response) in
                 // print response here
-                self.data = response
+                
+                
+                // response is an array of items ,
+                // we need to construct a array of dictionary of business items with key and value
+                
+                //set suggestions data source
+                
+                for business in response {
+                    print(business)
+                    self.searchSuggestions.append(business["node"])
+//                    for (key,subJson):(String, JSON) in business["node"] {
+//                        self.searchSuggestions[key] = subJson
+//                    }
+                }
+                
                 self.dropDowntable.reloadData()
                 self.activityIndicator.stopAnimating()
+                
             }
         }else{
             return

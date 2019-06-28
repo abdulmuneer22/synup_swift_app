@@ -16,6 +16,7 @@
 		DF1475C222C34C6700631642 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = DF1475C122C34C6700631642 /* schema.json */; };
 		DF1475C922C35E2700631642 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1475C822C35E2700631642 /* API.swift */; };
 		DF1475CB22C3658B00631642 /* GraphQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1475CA22C3658B00631642 /* GraphQueries.swift */; };
+		DF82159122C5CD8F004CC8AE /* DropDownItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF82159022C5CD8F004CC8AE /* DropDownItem.swift */; };
 		DF9241D022C489F90056F00D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9241CF22C489F90056F00D /* HomeViewController.swift */; };
 		DFA10E2D22C38B7F00245FD7 /* BusinessInformationTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA10E2C22C38B7F00245FD7 /* BusinessInformationTableView.swift */; };
 		DFA20CB622C1F7CB00A85070 /* BusinessInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA20CB522C1F7CB00A85070 /* BusinessInformationController.swift */; };
@@ -45,6 +46,7 @@
 		DF1475C122C34C6700631642 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		DF1475C822C35E2700631642 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		DF1475CA22C3658B00631642 /* GraphQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQueries.swift; sourceTree = "<group>"; };
+		DF82159022C5CD8F004CC8AE /* DropDownItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownItem.swift; sourceTree = "<group>"; };
 		DF9241CF22C489F90056F00D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DFA10E2C22C38B7F00245FD7 /* BusinessInformationTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInformationTableView.swift; sourceTree = "<group>"; };
 		DFA20CB522C1F7CB00A85070 /* BusinessInformationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BusinessInformationController.swift; path = ../Controllers/BusinessInformationController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				DFA20CB922C201A700A85070 /* CustomCell.swift */,
 				DFA10E2C22C38B7F00245FD7 /* BusinessInformationTableView.swift */,
 				DF9241CF22C489F90056F00D /* HomeViewController.swift */,
+				DF82159022C5CD8F004CC8AE /* DropDownItem.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				DF9241D022C489F90056F00D /* HomeViewController.swift in Sources */,
 				DF1475C922C35E2700631642 /* API.swift in Sources */,
 				DFB4AC8222BC91F1008DAB71 /* AppState.swift in Sources */,
+				DF82159122C5CD8F004CC8AE /* DropDownItem.swift in Sources */,
 				DFB4AC7322BC8059008DAB71 /* CustomTabBar.swift in Sources */,
 				DF03291E22B8E6F80017262F /* ViewController.swift in Sources */,
 				DF03291C22B8E6F80017262F /* AppDelegate.swift in Sources */,
