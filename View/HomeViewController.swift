@@ -230,6 +230,18 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
             data = [:]
             table.reloadData()
         }
+        
+//        else if index == 2 {
+//            data = [:]
+//            body.removeFromSuperview()
+////            table.reloadData()
+//        }
+//
+//        else{
+//            self.body.translatesAutoresizingMaskIntoConstraints = true
+//            self.view.addSubview(self.body)
+//            self.view.bringSubviewToFront(self.body)
+//        }
     }
     
     
