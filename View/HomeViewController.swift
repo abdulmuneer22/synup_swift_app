@@ -18,7 +18,7 @@ public enum Fonts: String {
 
 
 
-class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate,UITableViewDataSource {
+class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate,UITableViewDataSource , UISearchBarDelegate {
     
     
     var scrollView: UIScrollView!
@@ -84,6 +84,24 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
         return tv
     }()
     
+    fileprivate var dropDowntable: UITableView = {
+        var table = UITableView()
+        return table
+    }()
+    
+    fileprivate let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .gray)
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
+    
+    fileprivate let dropDownView : UIView = {
+        let dv = UIView()
+        dv.backgroundColor = .red
+        return dv
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,10 +110,18 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
         
         
         view.addSubview(body)
-        table.register(CustomCell.self, forCellReuseIdentifier: "custom")
+        table.register(CustomCell.self, forCellReuseIdentifier: "businessData")
         table.dataSource = self
         table.delegate = self
+        
+        
+        dropDowntable.register(CustomCell.self, forCellReuseIdentifier: "businessSuggestions")
+        dropDowntable.delegate = self
+        dropDowntable.dataSource = self
+        
         body.addSubview(table)
+        view.addSubview(dropDownView)
+        dropDownView.addSubview(dropDowntable)
         
         
         view.addSubview(footer)
@@ -103,6 +129,7 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
         
         
         tabBar.delegate = self
+        searchBar.delegate = self
         
         header.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -133,6 +160,12 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
         }
         
         
+        dropDowntable.snp.makeConstraints { (make) in
+            make.top.equalTo(dropDownView.snp.top)
+            make.bottom.equalTo(dropDownView.snp.bottom)
+            make.width.equalTo(dropDownView.snp.width)
+        }
+        
         footer.snp.makeConstraints { (make) in
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.height.equalTo(60)
@@ -143,6 +176,17 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
             make.bottom.equalTo(footer.snp.bottom)
             make.height.equalTo(60)
             make.width.equalTo(footer.snp.width)
+        }
+        
+        
+        // adding dropdown view
+        
+        
+        
+        dropDownView.snp.makeConstraints { (make) in
+            make.top.equalTo(searchBar.snp.bottomMargin)
+            make.width.equalTo(view.snp.width)
+            make.height.equalTo(200)
         }
         
         
@@ -171,14 +215,48 @@ class HomeViewController: UIViewController, UITabBarDelegate,UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // pass data to each cell item here , we are using Custom Cell Created by us than default UITableCell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "custom") as! CustomCell
-        let currentKey = Array(data.keys)[indexPath.row]
-        cell.headerLabel = currentKey
-        if let currentValue = data[currentKey]?.stringValue {
-            cell.headerValue = currentValue
+        
+        if tableView == self.dropDowntable {
+            // pass data to each cell item here , we are using Custom Cell Created by us than default UITableCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "businessSuggestions") as! CustomCell
+            let currentKey = Array(data.keys)[indexPath.row]
+            cell.headerLabel = currentKey
+            if let currentValue = data[currentKey]?.stringValue {
+                cell.headerValue = currentValue
+            }
+            return cell
+        }else if tableView == self.table {
+            // pass data to each cell item here , we are using Custom Cell Created by us than default UITableCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "businessData") as! CustomCell
+            let currentKey = Array(data.keys)[indexPath.row]
+            cell.headerLabel = currentKey
+            if let currentValue = data[currentKey]?.stringValue {
+                cell.headerValue = currentValue
+            }
+            return cell
         }
-        return cell
+        
+        return UITableViewCell()
+        
+    }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // on change on search bar , we need to check the length of input string ,
+        // if its > 3 , search need to be initiated ,
+        // during search , activity indicator need to be placed
+        if (searchText.count > 3){
+            self.activityIndicator.startAnimating()
+            GraphQueries.getBusinessData(queryString: searchText) { (response) in
+                // print response here
+                self.data = response
+                self.dropDowntable.reloadData()
+                self.activityIndicator.stopAnimating()
+            }
+        }else{
+            return
+        }
+        
     }
     
     
